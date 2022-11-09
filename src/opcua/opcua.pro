@@ -6,7 +6,13 @@ QT_FOR_CONFIG += core-private
 include(core/core.pri)
 include(client/client.pri)
 
-INCLUDEPATH += C:/Qt/Tools/OpenSSL/Win_x64/include
+
+message($$[QT_INSTALL_ARCHDATA])
+
+# TODO platform (linux)
+# currently we use openssl from QT installation
+# if it has to change, install a version on external and do like mbedtls
+INCLUDEPATH += $$[QT_INSTALL_ARCHDATA]/../../Tools/OpenSSL/Win_x64/include
 QMAKE_LIBDIR_MBEDTLS = $$PWD/../../ext/mbedtls/lib
 QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
 QMAKE_INCDIR_MBEDTLS = $$PWD/../../ext/mbedtls/include
