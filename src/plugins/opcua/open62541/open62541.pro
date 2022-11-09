@@ -2,10 +2,16 @@ TARGET = open62541_backend
 QT += core core-private opcua opcua-private network
 QT -= gui
 
+QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
+QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
+QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
+LIBS += -ladvapi32
+
 qtConfig(open62541):!qtConfig(system-open62541) {
     qtConfig(mbedtls):{
         QMAKE_USE_PRIVATE += mbedtls
         DEFINES += UA_ENABLE_ENCRYPTION
+		message("ENABLE_ENCRYTION")
     }
     include($$PWD/../../../3rdparty/open62541.pri)
 } else {

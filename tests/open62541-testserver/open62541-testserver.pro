@@ -1,6 +1,11 @@
 TEMPLATE = app
 TARGET = open62541-testserver
 
+QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
+QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
+QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
+LIBS += -ladvapi32
+
 INCLUDEPATH += \
                $$PWD/../../src/plugins/opcua/open62541
 
@@ -14,6 +19,7 @@ qtConfig(open62541):!qtConfig(system-open62541) {
     qtConfig(mbedtls):{
         QMAKE_USE_PRIVATE += mbedtls
         DEFINES += UA_ENABLE_ENCRYPTION
+		message("SERVER UA_ENABLE_ENCRYPTION")
     }
     include($$PWD/../../src/3rdparty/open62541.pri)
 } else {

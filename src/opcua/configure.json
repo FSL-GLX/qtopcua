@@ -3,7 +3,11 @@
     "testDir": "../../config.tests",
 
     "commandline": {
-        "options": {
+	    "assignments": {
+		    "QMAKE_LIBDIR_MBEDTLS":	"C:/dev/mbedtls/install/lib",
+			"DBUS_PATH": "dbus.prefix"
+			},
+			"options": {
             "open62541": { "type": "enum", "values": [ "no", "qt", "system"] }
         }
     },
@@ -54,13 +58,11 @@
         },
         "mbedtls": {
             "label": "mbedtls",
-            "test": "mbedtls",
+
             "sources": [
-                {
-                    "libs": "-lmbedx509 -lmbedcrypto"
-                }
-            ]
-        }
+			    { "type": "makeSpec", "spec": "MBEDTLS" }
+			]
+		}
     },
 
     "features": {
@@ -82,8 +84,8 @@
         },
         "mbedtls": {
             "label": "mbedtls",
-            "condition": "libs.mbedtls",
-            "output": [ "privateFeature" ]
+			"condition": "libs.mbedtls",
+			"output": [ "privateFeature" ]
         },
         "ns0idnames": {
             "label": "Support for namespace 0 NodeId names",

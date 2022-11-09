@@ -105,6 +105,20 @@ public:
                                             size_t inputSize, const UA_Variant *input,
                                             size_t outputSize, UA_Variant *output);
 
+
+	static UA_StatusCode simulateCommand(UA_Server *server, const UA_NodeId *sessionId, void *sessionHandle,
+	                                        const UA_NodeId *methodId, void *methodContext,
+	                                        const UA_NodeId *objectId, void *objectContext,
+	                                        size_t inputSize, const UA_Variant *input,
+	                                        size_t outputSize, UA_Variant *output);
+
+	static UA_StatusCode simulateReceiveResult(UA_Server *server, const UA_NodeId *sessionId, void *sessionHandle,
+	                                        const UA_NodeId *methodId, void *methodContext,
+	                                        const UA_NodeId *objectId, void *objectContext,
+	                                        size_t inputSize, const UA_Variant *input,
+	                                        size_t outputSize, UA_Variant *output);
+
+
     enum class MachineState : quint32 {
         Idle,
         Pumping,
@@ -118,6 +132,19 @@ public:
 
     double readTank2TargetValue();
 
+
+	int readCmdACK();
+	void setCmdACK(int ack);
+	void setCmdProgramId(QString value);
+	void setCmdPartId(QString value);
+	void setCmdWorkOrder(QString value);
+	int readResACK();
+	void setResACK(int ack);
+	QString readResProgramId();
+	QString readResPartId();
+	QString readResWorkOrder();
+	int readResRun();
+	int readResControl();
 private:
     UA_ServerConfig *m_config{nullptr};
     UA_Server *m_server{nullptr};
@@ -134,8 +161,23 @@ private:
     UA_NodeId m_tank2ValveStateNode;
     UA_NodeId m_machineStateNode;
 
+	UA_NodeId m_Cmd_ACK;
+	UA_NodeId m_Cmd_ProgramId;
+	UA_NodeId m_Cmd_PartId;
+	UA_NodeId m_Cmd_WorkOrder;
+	UA_NodeId m_Res_ACK;
+	UA_NodeId m_Res_ProgramId;
+	UA_NodeId m_Res_PartId;
+	UA_NodeId m_Res_WorkOrder;
+	UA_NodeId m_Res_Run;
+	UA_NodeId m_Res_Control;
+
+	bool createInsecureServerConfig(UA_ServerConfig *config);
+	bool createSecureServerConfig(UA_ServerConfig *config);
+
 public slots:
     void launch();
+	void initApriso();
     void processServerEvents();
     void shutdown();
 };

@@ -163,7 +163,7 @@ void MainWindow::setupPkiConfiguration()
 {
     QString pkidir = QCoreApplication::applicationDirPath();
 #ifdef Q_OS_WIN
-    pkidir += "../";
+	pkidir += "/..";
 #endif
     pkidir += "/pki";
     m_pkiConfig.setClientCertificateFile(pkidir + "/own/certs/opcuaviewer.der");
