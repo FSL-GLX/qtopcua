@@ -10,8 +10,8 @@ INCLUDEPATH += C:/Qt/Tools/OpenSSL/Win_x64/include
 QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
 QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
 QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
-DEFINES += UA_ENABLE_ENCRYPTION
-QMAKE_LIBDIR += -LC:/dev/mbedtls/install/lib
+#DEFINES += UA_ENABLE_ENCRYPTION
+#QMAKE_LIBDIR += -LC:/dev/mbedtls/install/lib
 
 qtConfig(gds) {
     qtConfig(ssl):!darwin:!winrt: include(x509/x509.pri)

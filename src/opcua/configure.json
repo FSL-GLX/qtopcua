@@ -3,10 +3,6 @@
     "testDir": "../../config.tests",
 
     "commandline": {
-	    "assignments": {
-		    "QMAKE_LIBDIR_MBEDTLS":	"C:/dev/mbedtls/install/lib",
-			"DBUS_PATH": "dbus.prefix"
-			},
 			"options": {
             "open62541": { "type": "enum", "values": [ "no", "qt", "system"] }
         }
