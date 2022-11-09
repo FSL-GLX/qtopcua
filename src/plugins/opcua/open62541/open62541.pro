@@ -2,9 +2,9 @@ TARGET = open62541_backend
 QT += core core-private opcua opcua-private network
 QT -= gui
 
-QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
+QMAKE_LIBDIR_MBEDTLS = $$PWD/../../../../ext/mbedtls/lib
 QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
-QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
+QMAKE_INCDIR_MBEDTLS = $$PWD/../../../../ext/mbedtls/include
 LIBS += -ladvapi32
 
 qtConfig(open62541):!qtConfig(system-open62541) {

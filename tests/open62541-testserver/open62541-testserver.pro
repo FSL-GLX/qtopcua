@@ -1,9 +1,10 @@
 TEMPLATE = app
 TARGET = open62541-testserver
 
-QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
+QMAKE_LIBDIR_MBEDTLS = $$PWD/../../ext/mbedtls/lib
 QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
-QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
+QMAKE_INCDIR_MBEDTLS = $$PWD/../../ext/mbedtls/include
+
 LIBS += -ladvapi32
 
 INCLUDEPATH += \

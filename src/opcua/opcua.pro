@@ -7,9 +7,9 @@ include(core/core.pri)
 include(client/client.pri)
 
 INCLUDEPATH += C:/Qt/Tools/OpenSSL/Win_x64/include
-QMAKE_LIBDIR_MBEDTLS = C:/dev/mbedtls/install/lib
+QMAKE_LIBDIR_MBEDTLS = $$PWD/../../ext/mbedtls/lib
 QMAKE_LIBS_MBEDTLS = -lmbedtls -lmbedx509 -lmbedcrypto
-QMAKE_INCDIR_MBEDTLS = C:/dev/mbedtls/install/include
+QMAKE_INCDIR_MBEDTLS = $$PWD/../../ext/mbedtls/include
 #DEFINES += UA_ENABLE_ENCRYPTION
 #QMAKE_LIBDIR += -LC:/dev/mbedtls/install/lib
 
